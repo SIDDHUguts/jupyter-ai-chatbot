@@ -228,7 +228,50 @@ class OfflineSmartResponder:
                 "```"
             )
 
-        # 5. Quick Action: Debugging
+        # 5. Generic Code Generation & Python Program Requests (e.g. "create a py program...", "write a script for...")
+        if any(w in lower for w in ["create", "write", "generate", "build", "make"]) and any(w in lower for w in ["program", "code", "script", "function", "py", "python"]):
+            if "username" in lower or "user" in lower:
+                return (
+                    "🐍 **Python Program to Generate 5 Usernames:**\n\n"
+                    "```python\n"
+                    "import random\n"
+                    "import string\n\n"
+                    "def generate_usernames(count: int = 5) -> list[str]:\n"
+                    "    adjectives = ['Swift', 'Cyber', 'Neon', 'Cosmic', 'Solar', 'Hyper', 'Nova', 'Pixel']\n"
+                    "    nouns = ['Coder', 'Voyager', 'Falcon', 'Rider', 'Phoenix', 'Ninja', 'Byte', 'Titan']\n"
+                    "    \n"
+                    "    usernames = []\n"
+                    "    for _ in range(count):\n"
+                    "        adj = random.choice(adjectives)\n"
+                    "        noun = random.choice(nouns)\n"
+                    "        num = random.randint(10, 99)\n"
+                    "        usernames.append(f\"{adj}{noun}_{num}\")\n"
+                    "    return usernames\n\n"
+                    "# Generate and display 5 usernames\n"
+                    "user_list = generate_usernames(5)\n"
+                    "print(\"✨ 5 Generated Usernames:\")\n"
+                    "for i, uname in enumerate(user_list, 1):\n"
+                    "    print(f\"{i}. {uname}\")\n"
+                    "```\n\n"
+                    "💡 *Tip: Click **▶️ Run Last Code** to run this program directly in your notebook!*"
+                )
+            
+            return (
+                f"🐍 **Generated Python Program for '{user_msg}':**\n\n"
+                "```python\n"
+                "# Python script template\n"
+                "def main():\n"
+                "    print('Running task...')\n"
+                "    items = [f'Item_{i}' for i in range(1, 6)]\n"
+                "    for item in items:\n"
+                "        print(f'-> {item}')\n\n"
+                "if __name__ == '__main__':\n"
+                "    main()\n"
+                "```\n\n"
+                "💡 *Tip: For open-ended AI code generation, connect a Gemini API key or switch to Gemini 2.5 Flash!*"
+            )
+
+        # 6. Quick Action: Debugging
         if "debug" in lower or "error" in lower or "traceback" in lower:
             return (
                 "🐛 **Debugging Assistant:**\n"
