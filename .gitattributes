@@ -1,3 +1,3 @@
-# Ensure GitHub Linguist accurately classifies Jupyter Notebooks and Python scripts
+# Classify both Python scripts and Jupyter Notebooks as Python for GitHub statistics
 *.py linguist-language=Python
-*.ipynb linguist-language=Jupyter_Notebook
+*.ipynb linguist-language=Python
